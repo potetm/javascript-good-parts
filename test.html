@@ -1,0 +1,28 @@
+<html>
+	<body>
+		<pre>
+			<script type="text/javascript" src="function-method.js"></script>
+			<script type="text/javascript">
+				String.method('deentityfy', function() {
+					var entity = {
+						quote: '"',
+						lt:    '<',
+						gt:    '>'
+					};
+
+					return function() {
+						return this.replace(
+							/&([^&;]+);/g,
+							function(a, b) {
+								var r = entity[b];
+								return (typeof r === 'string') ? r : a;
+							}
+						);
+					};
+				}());
+
+				document.writeln('&lt;&quot;&gt;'.deentityfy());
+			</script>
+		</pre>
+	</body>
+</html>
