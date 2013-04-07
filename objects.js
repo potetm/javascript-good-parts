@@ -3,7 +3,7 @@
 if (typeof Object.create !== 'function') {
   Object.create = function(o) {
     var F       = function() {};
-    f.prototype = o;
+    F.prototype = o;
     return new F();
   };
 }
